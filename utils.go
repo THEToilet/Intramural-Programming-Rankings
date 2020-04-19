@@ -53,7 +53,6 @@ func error_message(writer http.ResponseWriter, request *http.Request, msg string
 	http.Redirect(writer, request, strings.Join(url, ""), 302)
 }
 
-
 // parse HTML templates
 // pass in a list of file names, and get a template
 func parseTemplateFiles(filenames ...string) (t *template.Template) {
