@@ -7,6 +7,19 @@ import (
 	"net/url"
 )
 
+
+
+type AtCoderInfo struct {
+    user_id                    string    `json:"@user_id"`
+    accepted_count             string    `json:"@accepted_count"`
+    accepted_count_rank        string    `json:"@accepted_cout_rank"`
+    rated_point_sum            string    `json:"@rated_point_sum"`
+    rated_point_sum_rank       string    `json:"@rated_point_sum_rank"`
+}
+
+
+type AtCoderInfo []AtCoderInfo
+
 func api() {
 	values := url.Values{}
 	values.Add("user", "Toilet")
@@ -25,13 +38,6 @@ func api() {
 
 }
 
-type TrainInfomation struct {
-    user_id                    string    `json:"@user_id"`
-    accepted_count             string    `json:"@accepted_count"`
-    accepted_count_rank        string    `json:"@accepted_cout_rank"`
-    rated_point_sum            string    `json:"@rated_point_sum"`
-    rated_point_sum_rank       string    `json:"@rated_point_sum_rank"`
-}
 func execute(response *http.Response) {
 	body, err := ioutil.ReadAll(response.Body)
 	if err != nil {
@@ -39,6 +45,3 @@ func execute(response *http.Response) {
 	}
 	fmt.Println(string(body))
 }
-
-//func preservation(name string){
-//}
