@@ -7,7 +7,7 @@ import (
 	"net/url"
 )
 
-func main() {
+func API() {
 	values := url.Values{}
 	values.Add("user", "Toilet")
 	resp, err := http.Get("https://kenkoooo.com/atcoder/atcoder-api/v2/user_info" + "?" + values.Encode())

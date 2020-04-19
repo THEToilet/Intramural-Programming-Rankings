@@ -2,11 +2,9 @@ package main
 
 import (
 	"encoding/json"
-	"errors"
 	"fmt"
 	"html/template"
 	"log"
-  "./data"
 	"net/http"
 	"os"
 	"strings"
@@ -29,7 +27,7 @@ func p(a ...interface{}) {
 
 func init() {
 	loadConfig()
-	file, err := os.OpenFile("blastIssue.log", os.O_CREATE|os.O_WRONLY|os.O_APPEND, 0666)
+	file, err := os.OpenFile("error.log", os.O_CREATE|os.O_WRONLY|os.O_APPEND, 0666)
 	if err != nil {
 		log.Fatalln("Failed to open log file", err)
 	}
@@ -55,17 +53,6 @@ func error_message(writer http.ResponseWriter, request *http.Request, msg string
 	http.Redirect(writer, request, strings.Join(url, ""), 302)
 }
 
-// Checks if the user is logged in and has a session, if not err is not nil
-func session(writer http.ResponseWriter, request *http.Request) (sess data.Session, err error) {
-	cookie, err := request.Cookie("_cookie")
-	if err == nil {
-		sess = data.Session{Uuid: cookie.Value}
-		if ok, _ := sess.Check(); !ok {
-			err = errors.New("Invalid session")
-		}
-	}
-	return
-}
 
 // parse HTML templates
 // pass in a list of file names, and get a template
