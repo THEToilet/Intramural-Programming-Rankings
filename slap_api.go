@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"io/ioutil"
 	"net/http"
-	"net/url"
+	//	"net/url"
 	//	"time"
 )
 
@@ -33,27 +33,36 @@ type AtCoderHistory struct {
 }
 
 func api() {
-	values := url.Values{}
-	values.Add("user", "Toilet")
-	resp, err := http.Get("https://kenkoooo.com/atcoder/atcoder-api/v2/user_info" + "?" + values.Encode())
-	if err != nil {
-		fmt.Println(err)
-		return
+	// values := url.Values{}
+	// values.Add("user", "Toilet")
+	users := loadFile("user.txt")
+	for _, user := range users {
+		resp, err := http.Get("https://kenkoooo.com/atcoder/atcoder-api/v2/user_info?user=" + user)
+		if err != nil {
+			fmt.Println(err)
+			return
+		}
+		defer resp.Body.Close()
+		execute(resp)
 	}
-	defer resp.Body.Close()
-	execute(resp)
+	/*
+		respone, err := http.Get("https://kenkoooo.com/atcoder/atcoder-api/v2/user_info" + "?" + "user=toitenu")
+		defer respone.Body.Close()
+		execute(respone)
 
-	respone, err := http.Get("https://kenkoooo.com/atcoder/atcoder-api/v2/user_info" + "?" + "user=toitenu")
-	defer respone.Body.Close()
-	execute(respone)
-
-	respones, err := http.Get("https://kenkoooo.com/atcoder/atcoder-api/v2/user_info" + "?" + "user=5jiKinoko")
-	defer respones.Body.Close()
-	execute(respones)
-
-	responese, err := http.Get("https://atcoder.jp/users/Toilet/history/json")
-	defer responese.Body.Close()
-	done(responese)
+		respones, err := http.Get("https://kenkoooo.com/atcoder/atcoder-api/v2/user_info" + "?" + "user=5jiKinoko")
+		defer respones.Body.Close()
+		execute(respones)
+	*/
+	for _, user := range users {
+		res, err := http.Get("https://atcoder.jp/users/" + user + "/history/json")
+		if err != nil {
+			fmt.Println(err)
+			return
+		}
+		defer res.Body.Close()
+		done(res)
+	}
 }
 
 func execute(response *http.Response) {
