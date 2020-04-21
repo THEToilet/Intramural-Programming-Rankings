@@ -6,7 +6,7 @@ import (
 	"io/ioutil"
 	"net/http"
 	"net/url"
-//	"time"
+	//	"time"
 )
 
 type AtCoderInfo struct {
@@ -20,16 +20,16 @@ type AtCoderInfo struct {
 //type AtCoderInfo []AtCoderInfo
 
 type AtCoderHistory struct {
-	IsRated           string      `json:"IsRated"`
-	Place             json.Number `json:"Place"`
-	OldRating         json.Number `json:"OldRating"`
-	NewRating         json.Number `json:"NewRating"`
-	Performance       json.Number `json:"Performance"`
-	InnerPerformance  json.Number `json:"InnerPerformance"`
-	ContestScreenName string      `json:"ContestScreenName"`
-	ContestName       string      `json:"ContestName"`
-	ContestNameEn     string      `json:"ContestNameEn"`
-	EndTime           /*time.Time*/string   `json:"EndTime"`
+	IsRated                     bool        `json:"IsRated"`
+	Place                       json.Number `json:"Place"`
+	OldRating                   json.Number `json:"OldRating"`
+	NewRating                   json.Number `json:"NewRating"`
+	Performance                 json.Number `json:"Performance"`
+	InnerPerformance            json.Number `json:"InnerPerformance"`
+	ContestScreenName           string      `json:"ContestScreenName"`
+	ContestName                 string      `json:"ContestName"`
+	ContestNameEn               string      `json:"ContestNameEn"`
+	EndTime/*time.Time*/ string             `json:"EndTime"`
 }
 
 func api() {
@@ -96,25 +96,27 @@ func done(response *http.Response) {
 
 	var info string = string(body)
 	// Unmarshal結果の格納先である構造体のポインターを取得
-	atCoderHistory := new(AtCoderHistory)
-
+	// atCoderHistory := new(AtCoderHistory)
+	var atCoderHistories []*AtCoderHistory
 	// JSON文字列をバイト列にキャスト
-	jsonBytes := []byte(info)
 	// xJapanにバイト列を格納する
-	if err := json.Unmarshal(jsonBytes, atCoderHistory); err != nil {
-		fmt.Println(err)
+	var aaa = json.Unmarshal([]byte(info), &atCoderHistories)
+	if aaa != nil {
+		fmt.Println(aaa)
 		return
 	}
 
-	fmt.Println("IsRated : " + atCoderHistory.IsRated)
-	fmt.Println("Place : " + atCoderHistory.Place)
-	fmt.Println("OldRating : " + atCoderHistory.OldRating)
-	fmt.Println("NewRating : " + atCoderHistory.NewRating)
-	fmt.Println("Performance : " + atCoderHistory.Performance)
-	fmt.Println("InnerPerformance : " + atCoderHistory.InnerPerformance)
-	fmt.Println("ContestScreenName : " + atCoderHistory.ContestScreenName)
-	fmt.Println("ContestName : " + atCoderHistory.ContestName)
-	fmt.Println("ContestNameEn : " + atCoderHistory.ContestNameEn)
-	fmt.Println("EndTime : " + atCoderHistory.EndTime)
-
+	for _, history := range atCoderHistories {
+		//fmt.Printf("NAME: %-7s INSTRUMENT: %s\n", members.Name, members.Instrument)
+		fmt.Println(history.IsRated)
+		fmt.Println("Place : " + history.Place)
+		fmt.Println("OldRating : " + history.OldRating)
+		fmt.Println("NewRating : " + history.NewRating)
+		fmt.Println("Performance : " + history.Performance)
+		fmt.Println("InnerPerformance : " + history.InnerPerformance)
+		fmt.Println("ContestScreenName : " + history.ContestScreenName)
+		fmt.Println("ContestName : " + history.ContestName)
+		fmt.Println("ContestNameEn : " + history.ContestNameEn)
+		fmt.Println("EndTime : " + history.EndTime)
+	}
 }
