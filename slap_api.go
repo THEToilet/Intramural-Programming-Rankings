@@ -6,7 +6,7 @@ import (
 	"io/ioutil"
 	"net/http"
 	"net/url"
-	"time"
+//	"time"
 )
 
 type AtCoderInfo struct {
@@ -20,16 +20,16 @@ type AtCoderInfo struct {
 //type AtCoderInfo []AtCoderInfo
 
 type AtCoderHistory struct {
-	IsRated           bool      `json:"IsRated"`
-	Place             int       `json:"Place"`
-	OldRating         int       `json:"OldRating"`
-	NewRating         int       `json:"NewRating"`
-	Perfomance        int       `json:"Perfomance"`
-	InnerPerformance  int       `json:"InnerPerformance"`
-	ContestScreenName string    `json:"ContestScreenName"`
-	ContestName       string    `json:"ContestName"`
-	ContestNameEn     string    `json:"ContestNameEn"`
-	EndTime           time.Time `json:"EndTime"`
+	IsRated           string      `json:"IsRated"`
+	Place             json.Number `json:"Place"`
+	OldRating         json.Number `json:"OldRating"`
+	NewRating         json.Number `json:"NewRating"`
+	Performance       json.Number `json:"Performance"`
+	InnerPerformance  json.Number `json:"InnerPerformance"`
+	ContestScreenName string      `json:"ContestScreenName"`
+	ContestName       string      `json:"ContestName"`
+	ContestNameEn     string      `json:"ContestNameEn"`
+	EndTime           /*time.Time*/string   `json:"EndTime"`
 }
 
 func api() {
@@ -51,9 +51,9 @@ func api() {
 	defer respones.Body.Close()
 	execute(respones)
 
-	//	responese, err := http.Get("https://atcoder.jp/users/Toilet/history/json")
-	//	defer responese.Body.Close()
-	//	execute(responese)
+	responese, err := http.Get("https://atcoder.jp/users/Toilet/history/json")
+	defer responese.Body.Close()
+	done(responese)
 }
 
 func execute(response *http.Response) {
@@ -84,4 +84,37 @@ func execute(response *http.Response) {
 	fmt.Println("RatedPointSum : " + atCoderInfo.RatedPointSum)
 	fmt.Println("RatedPointSumRank : " + atCoderInfo.RatedPointSumRank)
 	// }
+}
+
+func done(response *http.Response) {
+
+	body, err := ioutil.ReadAll(response.Body)
+	if err != nil {
+		return
+	}
+	fmt.Println(string(body))
+
+	var info string = string(body)
+	// Unmarshal結果の格納先である構造体のポインターを取得
+	atCoderHistory := new(AtCoderHistory)
+
+	// JSON文字列をバイト列にキャスト
+	jsonBytes := []byte(info)
+	// xJapanにバイト列を格納する
+	if err := json.Unmarshal(jsonBytes, atCoderHistory); err != nil {
+		fmt.Println(err)
+		return
+	}
+
+	fmt.Println("IsRated : " + atCoderHistory.IsRated)
+	fmt.Println("Place : " + atCoderHistory.Place)
+	fmt.Println("OldRating : " + atCoderHistory.OldRating)
+	fmt.Println("NewRating : " + atCoderHistory.NewRating)
+	fmt.Println("Performance : " + atCoderHistory.Performance)
+	fmt.Println("InnerPerformance : " + atCoderHistory.InnerPerformance)
+	fmt.Println("ContestScreenName : " + atCoderHistory.ContestScreenName)
+	fmt.Println("ContestName : " + atCoderHistory.ContestName)
+	fmt.Println("ContestNameEn : " + atCoderHistory.ContestNameEn)
+	fmt.Println("EndTime : " + atCoderHistory.EndTime)
+
 }
