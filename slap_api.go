@@ -17,8 +17,6 @@ type AtCoderInfo struct {
 	RatedPointSumRank json.Number `json:"rated_point_sum_rank"`
 }
 
-//type AtCoderInfo []AtCoderInfo
-
 type AtCoderHistory struct {
 	IsRated                     bool        `json:"IsRated"`
 	Place                       json.Number `json:"Place"`
@@ -47,12 +45,7 @@ func api() {
 	}
 	/*
 		respone, err := http.Get("https://kenkoooo.com/atcoder/atcoder-api/v2/user_info" + "?" + "user=toitenu")
-		defer respone.Body.Close()
-		execute(respone)
-
-		respones, err := http.Get("https://kenkoooo.com/atcoder/atcoder-api/v2/user_info" + "?" + "user=5jiKinoko")
-		defer respones.Body.Close()
-		execute(respones)
+  	respones, err := http.Get("https://kenkoooo.com/atcoder/atcoder-api/v2/user_info" + "?" + "user=5jiKinoko")
 	*/
 	for _, user := range users {
 		res, err := http.Get("https://atcoder.jp/users/" + user + "/history/json")
@@ -70,7 +63,7 @@ func execute(response *http.Response) {
 	if err != nil {
 		return
 	}
-	fmt.Println(string(body))
+//	fmt.Println(string(body))
 
 	var info string = string(body)
 	// Unmarshal結果の格納先である構造体のポインターを取得
@@ -92,7 +85,6 @@ func execute(response *http.Response) {
 	fmt.Println("AcceptedCountRank : " + atCoderInfo.AcceptedCountRank)
 	fmt.Println("RatedPointSum : " + atCoderInfo.RatedPointSum)
 	fmt.Println("RatedPointSumRank : " + atCoderInfo.RatedPointSumRank)
-	// }
 }
 
 func done(response *http.Response) {
@@ -101,7 +93,7 @@ func done(response *http.Response) {
 	if err != nil {
 		return
 	}
-	fmt.Println(string(body))
+//	fmt.Println(string(body))
 
 	var info string = string(body)
 	// Unmarshal結果の格納先である構造体のポインターを取得
@@ -116,7 +108,6 @@ func done(response *http.Response) {
 	}
 
 	for _, history := range atCoderHistories {
-		//fmt.Printf("NAME: %-7s INSTRUMENT: %s\n", members.Name, members.Instrument)
 		fmt.Println(history.IsRated)
 		fmt.Println("Place : " + history.Place)
 		fmt.Println("OldRating : " + history.OldRating)
