@@ -5,8 +5,6 @@ import (
 	"fmt"
 	"io/ioutil"
 	"net/http"
-	//	"net/url"
-	//	"time"
 )
 
 type AtCoderInfo struct {
@@ -31,8 +29,6 @@ type AtCoderHistory struct {
 }
 
 func api() {
-	// values := url.Values{}
-	// values.Add("user", "Toilet")
 	users := loadFile("user.txt")
 	for _, user := range users {
 		resp, err := http.Get("https://kenkoooo.com/atcoder/atcoder-api/v2/user_info?user=" + user)
@@ -119,4 +115,5 @@ func done(response *http.Response) {
 		fmt.Println("ContestNameEn : " + history.ContestNameEn)
 		fmt.Println("EndTime : " + history.EndTime)
 	}
+
 }
