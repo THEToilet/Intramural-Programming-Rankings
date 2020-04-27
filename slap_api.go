@@ -28,38 +28,44 @@ type AtCoderHistory struct {
 	EndTime/*time.Time*/ string             `json:"EndTime"`
 }
 
-func api() {
+
+func api() string  {
 	users := loadFile("user.txt")
+	var re string = "username  AcceptedCount  AcceptedCountRank   RatedPointSum \n ---------------------------------------------\n" 
 	for _, user := range users {
 		resp, err := http.Get("https://kenkoooo.com/atcoder/atcoder-api/v2/user_info?user=" + user)
 		if err != nil {
 			fmt.Println(err)
-			return
+			panic(err)
 		}
 		defer resp.Body.Close()
-		execute(resp)
+		
+		re += execute(resp)
 	}
+	return re
 	/*
-		respone, err := http.Get("https://kenkoooo.com/atcoder/atcoder-api/v2/user_info" + "?" + "user=toitenu")
-  	respones, err := http.Get("https://kenkoooo.com/atcoder/atcoder-api/v2/user_info" + "?" + "user=5jiKinoko")
-	*/
-	for _, user := range users {
-		res, err := http.Get("https://atcoder.jp/users/" + user + "/history/json")
-		if err != nil {
-			fmt.Println(err)
-			return
+
+				respone, err := http.Get("https://kenkoooo.com/atcoder/atcoder-api/v2/user_info" + "?" + "user=toitenu")
+		  	respones, err := http.Get("https://kenkoooo.com/atcoder/atcoder-api/v2/user_info" + "?" + "user=5jiKinoko")
+
+		for _, user := range users {
+			res, err := http.Get("https://atcoder.jp/users/" + user + "/history/json")
+			if err != nil {
+				fmt.Println(err)
+				return
+			}
+			defer res.Body.Close()
+			done(res)
 		}
-		defer res.Body.Close()
-		done(res)
-	}
+	*/
 }
 
-func execute(response *http.Response) {
+func execute(response *http.Response) string {
 	body, err := ioutil.ReadAll(response.Body)
 	if err != nil {
-		return
+		panic(err)
 	}
-//	fmt.Println(string(body))
+	//	fmt.Println(string(body))
 
 	var info string = string(body)
 	// Unmarshal結果の格納先である構造体のポインターを取得
@@ -71,16 +77,16 @@ func execute(response *http.Response) {
 	// xJapanにバイト列を格納する
 	if err := json.Unmarshal(jsonBytes, atCoderInfo); err != nil {
 		fmt.Println(err)
-		return
 	}
-	// for _, members := range xJapan.Members {
-	//	fmt.Printf("UserId: %-7s AcceptedCount: %d AcceptedCountRank: %d RatedPointSum: %d RatedPointSumRank: %d\n", atCoderInfo.AcceptedCount, atCoderInfo.AcceptedCountRank,
-	//	atCoderInfo.RatedPointSum, atCoderInfo.RatedPointSumRank)
 	fmt.Println("UserId : " + atCoderInfo.UserId)
 	fmt.Println("AcceptedCount : " + atCoderInfo.AcceptedCount)
 	fmt.Println("AcceptedCountRank : " + atCoderInfo.AcceptedCountRank)
 	fmt.Println("RatedPointSum : " + atCoderInfo.RatedPointSum)
 	fmt.Println("RatedPointSumRank : " + atCoderInfo.RatedPointSumRank)
+	result := (string(atCoderInfo.UserId) + "   " + string(atCoderInfo.AcceptedCount) + "  "  + string(atCoderInfo.AcceptedCountRank) + "      " + string(atCoderInfo.RatedPointSum) + "\n" )
+	
+	return result
+
 }
 
 func done(response *http.Response) {
@@ -89,14 +95,14 @@ func done(response *http.Response) {
 	if err != nil {
 		return
 	}
-//	fmt.Println(string(body))
+	//	fmt.Println(string(body))
 
 	var info string = string(body)
 	// Unmarshal結果の格納先である構造体のポインターを取得
 	// atCoderHistory := new(AtCoderHistory)
 	var atCoderHistories []*AtCoderHistory
 	// JSON文字列をバイト列にキャスト
-	// xJapanにバイト列を格納する
+	// atCoderHistoriesにバイト列を格納する
 	var aaa = json.Unmarshal([]byte(info), &atCoderHistories)
 	if aaa != nil {
 		fmt.Println(aaa)
@@ -115,5 +121,4 @@ func done(response *http.Response) {
 		fmt.Println("ContestNameEn : " + history.ContestNameEn)
 		fmt.Println("EndTime : " + history.EndTime)
 	}
-
 }

@@ -1,10 +1,11 @@
 package main
 
 import (
+	"fmt"
 	"net/http"
 )
 
 // GET /showwiki?q=
 func index(writer http.ResponseWriter, request *http.Request) {
-	api()
+	fmt.Fprintf(writer, api())
 }
