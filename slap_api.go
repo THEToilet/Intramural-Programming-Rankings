@@ -28,10 +28,9 @@ type AtCoderHistory struct {
 	EndTime/*time.Time*/ string             `json:"EndTime"`
 }
 
-
-func api() string  {
+func api() string {
 	users := loadFile("user.txt")
-	var re string = "username  AcceptedCount  AcceptedCountRank   RatedPointSum \n ---------------------------------------------\n" 
+	var re string = "username  AcceptedCount  AcceptedCountRank   RatedPointSum \n ---------------------------------------------\n"
 	for _, user := range users {
 		resp, err := http.Get("https://kenkoooo.com/atcoder/atcoder-api/v2/user_info?user=" + user)
 		if err != nil {
@@ -39,7 +38,7 @@ func api() string  {
 			panic(err)
 		}
 		defer resp.Body.Close()
-		
+
 		re += execute(resp)
 	}
 	return re
@@ -83,8 +82,8 @@ func execute(response *http.Response) string {
 	fmt.Println("AcceptedCountRank : " + atCoderInfo.AcceptedCountRank)
 	fmt.Println("RatedPointSum : " + atCoderInfo.RatedPointSum)
 	fmt.Println("RatedPointSumRank : " + atCoderInfo.RatedPointSumRank)
-	result := (string(atCoderInfo.UserId) + "   " + string(atCoderInfo.AcceptedCount) + "  "  + string(atCoderInfo.AcceptedCountRank) + "      " + string(atCoderInfo.RatedPointSum) + "\n" )
-	
+	result := (string(atCoderInfo.UserId) + "   " + string(atCoderInfo.AcceptedCount) + "  " + string(atCoderInfo.AcceptedCountRank) + "      " + string(atCoderInfo.RatedPointSum) + "\n")
+
 	return result
 
 }

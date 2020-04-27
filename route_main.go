@@ -9,3 +9,7 @@ import (
 func index(writer http.ResponseWriter, request *http.Request) {
 	fmt.Fprintf(writer, api())
 }
+
+func test(writer http.ResponseWriter, request *http.Request) {
+	test_sql()
+}
