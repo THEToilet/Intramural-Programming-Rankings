@@ -28,6 +28,19 @@ type AtCoderHistory struct {
 	EndTime/*time.Time*/ string             `json:"EndTime"`
 }
 
+func getApi(name string) string{
+
+		respo, err := http.Get("https://kenkoooo.com/atcoder/atcoder-api/v2/user_info?user=" + name)
+
+		if err != nil {
+			fmt.Println(err)
+			panic(err)
+		}
+		defer respo.Body.Close()
+
+		return execute(respo)
+}
+
 func api() string {
 	users := loadFile("user.txt")
 	var re string = "username  AcceptedCount  AcceptedCountRank   RatedPointSum \n ---------------------------------------------\n"
