@@ -17,80 +17,50 @@ func test_sql() {
 
 	uusers := loadFile("user.txt")
 
-	//userEx := Users{}
-
 	uuuu := []Users{}
 	for _, user := range uusers {
 		tmpInfo := getApi(user)
 		print(tmpInfo)
-		e := db.Where("Name = ?", user).Find(&uuuu)
-		if e != nil {
+		//e := db.Where("Name = ?", user).Find(&uuuu)
+		//if e != nil {
 
-			fmt.Println("#%v", tmpInfo)
-			id, _ := tmpInfo.AcceptedCount.Int64()
-			id1, _ := tmpInfo.AcceptedCountRank.Int64()
-			id2, _ := tmpInfo.RatedPointSum.Int64()
-			id3, _ := tmpInfo.RatedPointSumRank.Int64()
-			db.Create(&Users{
-				Name:              user,
-				AcceptedCount:     int(id),
-				AcceptedCountRank: int(id1),
-				RatedPointSum:     int(id2),
-				RatedPointSumRank: int(id3),
-				CreatedTime:       getDate(),
-				UpdatedTime:       getDate(),
-			})
-		}
+		fmt.Println("#%v", tmpInfo)
+		id, _ := tmpInfo.AcceptedCount.Int64()
+		id1, _ := tmpInfo.AcceptedCountRank.Int64()
+		id2, _ := tmpInfo.RatedPointSum.Int64()
+		id3, _ := tmpInfo.RatedPointSumRank.Int64()
+		db.Update(&Users{
+			Name:              user,
+			AcceptedCount:     int(id),
+			AcceptedCountRank: int(id1),
+			RatedPointSum:     int(id2),
+			RatedPointSumRank: int(id3),
+			CreatedTime:       getDate(),
+			UpdatedTime:       getDate(),
+		})
+		//}
 	}
-
-	//	fmt.Printf("%#v\n",db)
 
 	/*
-			   	userEx.Name = "Toilet"
-			   	userEx.AcceptedCount = 123
-			   	userEx.AcceptedCountRank = 1000000
-			   	userEx.RatedPointSum = 34
-			   	userEx.RatedPointSumRank = 12
-			   	userEx.CreatedTime = getDate()
-			   	userEx.UpdatedTime = getDate()
-		   	// INSERTを実行
-			     // db.Create(&userEx)
-			     db.Update(&userEx)
+		//データを格納する変数を定義
+		users := []Users{}
+
+		//全取得
+		db.Find(&users)
+		//	print(users)
+		//表示
+		for _, user := range users {
+			//		fmt.Println(user)
+			fmt.Println(user.Id)
+			fmt.Println(user.Name)
+			fmt.Println(user.AcceptedCount)
+			fmt.Println(user.AcceptedCountRank)
+			fmt.Println(user.RatedPointSum)
+			fmt.Println(user.RatedPointSumRank)
+			fmt.Println(user.CreatedTime)
+			fmt.Println(user.UpdatedTime)
+		}
 	*/
-	error := db.Create(&Users{
-		Name:              "Unko",
-		AcceptedCount:     123,
-		AcceptedCountRank: 12,
-		RatedPointSum:     34,
-		RatedPointSumRank: 12,
-		CreatedTime:       getDate(),
-		UpdatedTime:       getDate(),
-	}).Error
-
-	if error != nil {
-		fmt.Println(error)
-	} else {
-		fmt.Println("データ追加成功")
-	}
-
-	//データを格納する変数を定義
-	users := []Users{}
-
-	//全取得
-	db.Find(&users)
-	//	print(users)
-	//表示
-	for _, user := range users {
-		//		fmt.Println(user)
-		fmt.Println(user.Id)
-		fmt.Println(user.Name)
-		fmt.Println(user.AcceptedCount)
-		fmt.Println(user.AcceptedCountRank)
-		fmt.Println(user.RatedPointSum)
-		fmt.Println(user.RatedPointSumRank)
-		fmt.Println(user.CreatedTime)
-		fmt.Println(user.UpdatedTime)
-	}
 }
 
 func getDate() string {
@@ -111,7 +81,7 @@ func sqlConnect() (database *gorm.DB, err error) {
 	return gorm.Open(DBMS, CONNECT)
 }
 
-// Users ユーザー情報のテーブル情報
+// Users ユーザー情報のテーブル情報(SQLの構造体)
 type Users struct {
 	Id                int
 	Name              string `gorm:"column:name"`
