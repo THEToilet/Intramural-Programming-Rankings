@@ -1,11 +1,35 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/jinzhu/gorm"
+	"io/ioutil"
+	"net/http"
 	"time"
 )
+
+func parseJson(response *http.Response) *AtCoderInfo {
+	bod, er := ioutil.ReadAll(response.Body)
+	if er != nil {
+		panic(er)
+	}
+	//▸-fmt.Println(string(body))
+
+	var info string = string(bod)
+	// Unmarshal結果の格納先である構造体のポインターを取得
+	aCoderInfo := new(AtCoderInfo)
+
+	// JSON文字列をバイト列にキャスト
+	jsonBytes := []byte(info)
+
+	// xJapanにバイト列を格納する
+	if err := json.Unmarshal(jsonBytes, aCoderInfo); err != nil {
+		fmt.Println(err)
+	}
+	return aCoderInfo
+}
 
 func test_sql() {
 	// db接続
@@ -21,15 +45,18 @@ func test_sql() {
 
 	uuuu := []Users{}
 	for _, user := range uusers {
+	  tmpInfo := getApi(user)
+		print(tmpInfo)
 		e := db.Where("Name = ?", user).Find(&uuuu)
 		if e != nil {
-
+			
+			fmt.Println("#%v",tmpInfo)
 			db.Create(&Users{
 				Name:              user,
-				AcceptedCount:     123,
-				AcceptedCountRank: 12,
-				RatedPointSum:     34,
-				RatedPointSumRank: 12,
+				AcceptedCount:     4,//int(tmpInfo),
+				AcceptedCountRank: 4,//int(tmpInfo),
+				RatedPointSum:     4,//int(tmpInfo),
+				RatedPointSumRank: 4,//int(tmpInfo),
 				CreatedTime:       getDate(),
 				UpdatedTime:       getDate(),
 			})
@@ -39,17 +66,16 @@ func test_sql() {
 	//	fmt.Printf("%#v\n",db)
 
 	/*
-	   	userEx.Name = "Toilet"
-	   	userEx.AcceptedCount = 123
-	   	userEx.AcceptedCountRank = 1000000
-	   	userEx.RatedPointSum = 34
-	   	userEx.RatedPointSumRank = 12
-	   	userEx.CreatedTime = getDate()
-	   	userEx.UpdatedTime = getDate()
-
-	   	// INSERTを実行
-	     // db.Create(&userEx)
-	     db.Update(&userEx)
+			   	userEx.Name = "Toilet"
+			   	userEx.AcceptedCount = 123
+			   	userEx.AcceptedCountRank = 1000000
+			   	userEx.RatedPointSum = 34
+			   	userEx.RatedPointSumRank = 12
+			   	userEx.CreatedTime = getDate()
+			   	userEx.UpdatedTime = getDate()
+		   	// INSERTを実行
+			     // db.Create(&userEx)
+			     db.Update(&userEx)
 	*/
 	error := db.Create(&Users{
 		Name:              "Unko",

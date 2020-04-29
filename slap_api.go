@@ -28,17 +28,17 @@ type AtCoderHistory struct {
 	EndTime/*time.Time*/ string             `json:"EndTime"`
 }
 
-func getApi(name string) string{
+func getApi(name string) *AtCoderInfo {
+	print(name)
+	respo, err := http.Get("https://kenkoooo.com/atcoder/atcoder-api/v2/user_info?user=" + name)
 
-		respo, err := http.Get("https://kenkoooo.com/atcoder/atcoder-api/v2/user_info?user=" + name)
-
-		if err != nil {
-			fmt.Println(err)
-			panic(err)
-		}
-		defer respo.Body.Close()
-
-		return execute(respo)
+	if err != nil {
+		fmt.Println(err)
+		panic(err)
+	}
+	defer respo.Body.Close()
+	
+	return ee(respo)
 }
 
 func api() string {
@@ -134,3 +134,33 @@ func done(response *http.Response) {
 		fmt.Println("EndTime : " + history.EndTime)
 	}
 }
+
+
+func ee(response *http.Response) *AtCoderInfo {
+	body, err := ioutil.ReadAll(response.Body)
+	if err != nil {
+		panic(err)
+	}
+	//	fmt.Println(string(body))
+
+	var info string = string(body)
+	// Unmarshal結果の格納先である構造体のポインターを取得
+	atCoderInfo := new(AtCoderInfo)
+
+	// JSON文字列をバイト列にキャスト
+	jsonBytes := []byte(info)
+
+	// xJapanにバイト列を格納する
+	if err := json.Unmarshal(jsonBytes, atCoderInfo); err != nil {
+		fmt.Println(err)
+	}
+	fmt.Println("UserId : " + atCoderInfo.UserId)
+	fmt.Println("AcceptedCount : " + atCoderInfo.AcceptedCount)
+	fmt.Println("AcceptedCountRank : " + atCoderInfo.AcceptedCountRank)
+	fmt.Println("RatedPointSum : " + atCoderInfo.RatedPointSum)
+	fmt.Println("RatedPointSumRank : " + atCoderInfo.RatedPointSumRank)
+
+	return atCoderInfo
+
+}
+
