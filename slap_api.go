@@ -37,7 +37,7 @@ func getApi(name string) *AtCoderInfo {
 		panic(err)
 	}
 	defer respo.Body.Close()
-	
+
 	return ee(respo)
 }
 
@@ -131,7 +131,6 @@ func done(response *http.Response) {
 	}
 }
 
-
 func ee(response *http.Response) *AtCoderInfo {
 	body, err := ioutil.ReadAll(response.Body)
 	if err != nil {
@@ -159,4 +158,3 @@ func ee(response *http.Response) *AtCoderInfo {
 	return atCoderInfo
 
 }
-

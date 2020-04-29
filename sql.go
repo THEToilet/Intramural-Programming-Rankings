@@ -1,35 +1,11 @@
 package main
 
 import (
-	"encoding/json"
 	"fmt"
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/jinzhu/gorm"
-	"io/ioutil"
-	"net/http"
 	"time"
 )
-
-func parseJson(response *http.Response) *AtCoderInfo {
-	bod, er := ioutil.ReadAll(response.Body)
-	if er != nil {
-		panic(er)
-	}
-	//▸-fmt.Println(string(body))
-
-	var info string = string(bod)
-	// Unmarshal結果の格納先である構造体のポインターを取得
-	aCoderInfo := new(AtCoderInfo)
-
-	// JSON文字列をバイト列にキャスト
-	jsonBytes := []byte(info)
-
-	// xJapanにバイト列を格納する
-	if err := json.Unmarshal(jsonBytes, aCoderInfo); err != nil {
-		fmt.Println(err)
-	}
-	return aCoderInfo
-}
 
 func test_sql() {
 	// db接続
@@ -45,20 +21,16 @@ func test_sql() {
 
 	uuuu := []Users{}
 	for _, user := range uusers {
-	  tmpInfo := getApi(user)
+		tmpInfo := getApi(user)
 		print(tmpInfo)
 		e := db.Where("Name = ?", user).Find(&uuuu)
 		if e != nil {
-			
-			fmt.Println("#%v",tmpInfo)
+
+			fmt.Println("#%v", tmpInfo)
 			id, _ := tmpInfo.AcceptedCount.Int64()
-			print(int(id))
 			id1, _ := tmpInfo.AcceptedCountRank.Int64()
-			print(int(id1))
 			id2, _ := tmpInfo.RatedPointSum.Int64()
-			print(int(id2))
 			id3, _ := tmpInfo.RatedPointSumRank.Int64()
-			print(int(id3))
 			db.Create(&Users{
 				Name:              user,
 				AcceptedCount:     int(id),
