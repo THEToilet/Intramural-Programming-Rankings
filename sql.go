@@ -103,7 +103,7 @@ func getUserInfo() string {
 		fmt.Println(user.UpdatedTime)
 
 //	for _, user := range users {
-		result += (fmt.Sprintf("%d",user.Id) + fmt.Sprintf("%s",user.Name) + fmt.Sprintf("%d",user.AcceptedCount) + fmt.Sprintf("%d",user.AcceptedCountRank) + fmt.Sprintf("%d",user.RatedPointSum) + fmt.Sprintf("%d",user.RatedPointSumRank) + fmt.Sprintf("%s",user.CreatedTime) + "\n")
+		result += (fmt.Sprintf("%d",user.Id) +" "+ fmt.Sprintf("%s",user.Name) + " "+ fmt.Sprintf("%d",user.AcceptedCount) +" "+ fmt.Sprintf("%d",user.AcceptedCountRank) +" "+ fmt.Sprintf("%d",user.RatedPointSum) +" "+ fmt.Sprintf("%d",user.RatedPointSumRank) +" " + fmt.Sprintf("%s",user.CreatedTime) + "\n")
 	}
 
 //result += "unnko"
