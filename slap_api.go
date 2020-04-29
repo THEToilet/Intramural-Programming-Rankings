@@ -56,10 +56,6 @@ func api() string {
 	}
 	return re
 	/*
-
-				respone, err := http.Get("https://kenkoooo.com/atcoder/atcoder-api/v2/user_info" + "?" + "user=toitenu")
-		  	respones, err := http.Get("https://kenkoooo.com/atcoder/atcoder-api/v2/user_info" + "?" + "user=5jiKinoko")
-
 		for _, user := range users {
 			res, err := http.Get("https://atcoder.jp/users/" + user + "/history/json")
 			if err != nil {

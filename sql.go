@@ -51,12 +51,20 @@ func test_sql() {
 		if e != nil {
 			
 			fmt.Println("#%v",tmpInfo)
+			id, _ := tmpInfo.AcceptedCount.Int64()
+			print(int(id))
+			id1, _ := tmpInfo.AcceptedCountRank.Int64()
+			print(int(id1))
+			id2, _ := tmpInfo.RatedPointSum.Int64()
+			print(int(id2))
+			id3, _ := tmpInfo.RatedPointSumRank.Int64()
+			print(int(id3))
 			db.Create(&Users{
 				Name:              user,
-				AcceptedCount:     4,//int(tmpInfo),
-				AcceptedCountRank: 4,//int(tmpInfo),
-				RatedPointSum:     4,//int(tmpInfo),
-				RatedPointSumRank: 4,//int(tmpInfo),
+				AcceptedCount:     int(id),
+				AcceptedCountRank: int(id1),
+				RatedPointSum:     int(id2),
+				RatedPointSumRank: int(id3),
 				CreatedTime:       getDate(),
 				UpdatedTime:       getDate(),
 			})
