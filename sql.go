@@ -1,7 +1,7 @@
 package main
 
 import (
-	"fmt"
+	_	"fmt"
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/jinzhu/gorm"
 	"time"
@@ -27,10 +27,10 @@ func test_sql() {
 		db.First(&uuuu, count)
 		count++
 		// fmt.Println("#%v", tmpInfo)
-		id, _ := tmpInfo.AcceptedCount.Int64()
-		id1, _ := tmpInfo.AcceptedCountRank.Int64()
-		id2, _ := tmpInfo.RatedPointSum.Int64()
-		id3, _ := tmpInfo.RatedPointSumRank.Int64()
+		id, _ := tmpInfo.AcceptedCount.int64()
+		id1, _ := tmpInfo.AcceptedCountRank.int64()
+		id2, _ := tmpInfo.RatedPointSum.int64()
+		id3, _ := tmpInfo.RatedPointSumRank.int64()
 		db.Save(&Users{
 			Name:              tmpInfo.UserId,
 			AcceptedCount:     int(id),
@@ -74,7 +74,7 @@ func test_sql() {
 	*/
 }
 
-func getUserInfo() []Users {
+func getUserInfo() string {
 
 	// db接続
 	db, err := sqlConnect()
@@ -89,17 +89,24 @@ func getUserInfo() []Users {
 	//	print(users)
 	//表示
 	for _, user := range users {
+
 		//		fmt.Println(user)
-		fmt.Println(user.Id)
-		fmt.Println(user.Name)
-		fmt.Println(user.AcceptedCount)
-		fmt.Println(user.AcceptedCountRank)
-		fmt.Println(user.RatedPointSum)
-		fmt.Println(user.RatedPointSumRank)
-		fmt.Println(user.CreatedTime)
-		fmt.Println(user.UpdatedTime)
+		print(user.Id)
+		print(user.Name)
+		print(user.AcceptedCount)
+		print(user.AcceptedCountRank)
+		print(user.RatedPointSum)
+		print(user.RatedPointSumRank)
+		print(user.CreatedTime)
+		print(user.UpdatedTime)
 	}
-	return users
+
+	var result string
+	for _, user := range users {
+		//▸-▸-fmt.Println(user)
+		result = (string(user.Id)+"\n"+string(user.Name)+"\n"+string(user.AcceptedCount)+"\n"+string(user.AcceptedCountRank)+"\n"+string(user.RatedPointSum)+"\n"+string(user.RatedPointSumRank)+"\n"+string(user.CreatedTime)+"\n"+string(user.UpdatedTime)+"\n")
+	}
+	return string(result)
 
 }
 
