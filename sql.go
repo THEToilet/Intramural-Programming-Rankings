@@ -31,7 +31,7 @@ func test_sql() {
 		id1, _ := tmpInfo.AcceptedCountRank.Int64()
 		id2, _ := tmpInfo.RatedPointSum.Int64()
 		id3, _ := tmpInfo.RatedPointSumRank.Int64()
-		db.Save(&Users{
+		db.Create(&Users{
 			Name:              tmpInfo.UserId,
 			AcceptedCount:     int(id),
 			AcceptedCountRank: int(id1),
