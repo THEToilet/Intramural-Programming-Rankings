@@ -21,12 +21,8 @@ func test_sql() {
 	count := 1
 	for _, user := range uusers {
 		tmpInfo := getApi(user)
-		// print(tmpInfo)
-		//e := db.Where("Name = ?", user).Find(&uuuu)
-		//if e != nil {
 		db.First(&uuuu, count)
 		count++
-		// fmt.Println("#%v", tmpInfo)
 		id, _ := tmpInfo.AcceptedCount.Int64()
 		id1, _ := tmpInfo.AcceptedCountRank.Int64()
 		id2, _ := tmpInfo.RatedPointSum.Int64()
@@ -40,38 +36,7 @@ func test_sql() {
 			CreatedTime:       getDate(),
 			UpdatedTime:       getDate(),
 		})
-		//}
-		/*
-			uuuu.Name = tmpInfo.UserId
-			uuuu.AcceptedCount = int(id)
-			uuuu.AcceptedCountRank = int(id1)
-			uuuu.RatedPointSum = int(id2)
-			uuuu.RatedPointSumRank = int(id3)
-			uuuu.CreatedTime = getDate()
-			uuuu.UpdatedTime = getDate()
-			db.Save(&uuuu)*/
 	}
-
-	/*
-		//データを格納する変数を定義
-		users := []Users{}
-
-		//全取得
-		db.Find(&users)
-		//	print(users)
-		//表示
-		for _, user := range users {
-			//		fmt.Println(user)
-			fmt.Println(user.Id)
-			fmt.Println(user.Name)
-			fmt.Println(user.AcceptedCount)
-			fmt.Println(user.AcceptedCountRank)
-			fmt.Println(user.RatedPointSum)
-			fmt.Println(user.RatedPointSumRank)
-			fmt.Println(user.CreatedTime)
-			fmt.Println(user.UpdatedTime)
-		}
-	*/
 }
 
 func getUserInfo() string {
@@ -86,7 +51,6 @@ func getUserInfo() string {
 
 	//全取得
 	db.Find(&users)
-	//	print(users)
 
 	var result string
 	//表示
@@ -102,14 +66,10 @@ func getUserInfo() string {
 		fmt.Println(user.CreatedTime)
 		fmt.Println(user.UpdatedTime)
 
-		//	for _, user := range users {
 		result += (fmt.Sprintf("%d", user.Id) + " " + fmt.Sprintf("%s", user.Name) + " " + fmt.Sprintf("%d", user.AcceptedCount) + " " + fmt.Sprintf("%d", user.AcceptedCountRank) + " " + fmt.Sprintf("%d", user.RatedPointSum) + " " + fmt.Sprintf("%d", user.RatedPointSumRank) + " " + fmt.Sprintf("%s", user.CreatedTime) + "\n")
 	}
 
-	//result += "unnko"
-
 	return result
-
 }
 
 func getDate() string {
