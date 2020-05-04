@@ -39,15 +39,6 @@ func getUsersatCoderInfo() []*AtCoderInfo {
 	return atcoderInfos
 }
 
-func getUsersatCoderHistory(name string) []*AtCoderHistory {
-	atcoderHistories := make([]*AtCoderHistory, 0, 100)
-	tmpUserHistores := getAtCoderHistoryStruct(name)
-	for _, tmpUserHistory := range tmpUserHistores {
-		atcoderHistories = append(atcoderHistories, tmpUserHistory)
-	}
-	return atcoderHistories
-}
-
 func getAtCoderInfoStruct(name string) *AtCoderInfo {
 
 	res, err := http.Get("https://kenkoooo.com/atcoder/atcoder-api/v2/user_info?user=" + name)
