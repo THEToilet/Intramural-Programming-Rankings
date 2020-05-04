@@ -39,6 +39,7 @@ func getUsersatCoderInfo() []*AtCoderInfo {
 	return atcoderInfos
 }
 
+
 // Returning user information as a string
 func getUserScore() string {
 
@@ -104,9 +105,15 @@ func getAtCoderInfoStruct(name string) *AtCoderInfo {
 
 	return atCoderInfo
 }
-func getAtCoderHistoryStruct(response *http.Response) []*AtCoderHistory {
+func getAtCoderHistoryStruct(name string) []*AtCoderHistory {
 
-	body, err := ioutil.ReadAll(response.Body)
+	res, err := http.Get("https://atcoder.jp/users/" + name + "/history/json")
+	if err != nil {
+		fmt.Println(err)
+	}
+	defer res.Body.Close()
+
+	body, err := ioutil.ReadAll(res.Body)
 	if err != nil {
 		panic(err)
 	}
