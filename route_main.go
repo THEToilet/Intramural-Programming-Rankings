@@ -19,5 +19,6 @@ func test(writer http.ResponseWriter, request *http.Request) {
 
 // GET list
 func list(writer http.ResponseWriter, request *http.Request) {
-	generateHTML(writer, getAtCoderInfoStruct("Toilet"), "index", "navbar", "ranking")
+	print(getAtCoderInfoStruct("Toilet"))
+	generateHTML(writer, nil, "index", "navbar", "ranking")
 }
