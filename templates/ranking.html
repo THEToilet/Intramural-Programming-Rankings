@@ -1,27 +1,28 @@
-{{ define "ranking" }} 
+{{ define "ranking" }}
+
 <head>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.1/js/jquery.tablesorter.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.1/js/jquery.tablesorter.min.js"></script>
 </head>
 <table class="tablesorter" id="myTable">
-<thead>
+  <thead>
     <tr>
-    <th>Rank</th>
-    <th>ID</th>
-    <th>UseName</th>
-    <th>ACCount</th>
-    <th>RatedPointSum</th>
+      <th>Rank</th>
+      <th>ID</th>
+      <th>UseName</th>
+      <th>ACCount</th>
+      <th>RatedPointSum</th>
     </tr>
   </thead>
-<tbody>
-{{range .}}
-<tr>
-<td>{{.UserId}}</td>
-<td>{{.AcceptedCount}}</td>
-<td>{{.AcceptedCountRank}}</td>
-<td>{{.RatedPointSum}}</td>
-<td>{{.RatedPointSumRank}}</td>
-</tr>
-{{end}}
-</tbody>
+  <tbody>
+    {{range .}}
+    <tr>
+      <td>{{.UserId}}</td>
+      <td>{{.AcceptedCount}}</td>
+      <td>{{.AcceptedCountRank}}</td>
+      <td>{{.RatedPointSum}}</td>
+      <td>{{.RatedPointSumRank}}</td>
+    </tr>
+    {{end}}
+  </tbody>
 
-{{ end }}
+  {{ end }}
