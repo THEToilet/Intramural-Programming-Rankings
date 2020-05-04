@@ -5,11 +5,12 @@ import (
 	"net/http"
 )
 
-// GET /showwiki?q=
+// GET index
 func index(writer http.ResponseWriter, request *http.Request) {
 	fmt.Fprintf(writer, api())
 }
 
+// GET test
 func test(writer http.ResponseWriter, request *http.Request) {
 	test_sql()
 	result := getUserInfo()

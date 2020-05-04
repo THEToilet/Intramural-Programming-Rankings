@@ -7,6 +7,7 @@ import (
 	"net/http"
 )
 
+// GET "https://kenkoooo.com/atcoder/atcoder-api/v2/user_info?user=" + name"
 type AtCoderInfo struct {
 	UserId            string      `json:"user_id"`
 	AcceptedCount     json.Number `json:"accepted_count"`
@@ -15,6 +16,7 @@ type AtCoderInfo struct {
 	RatedPointSumRank json.Number `json:"rated_point_sum_rank"`
 }
 
+// GET "https://atcoder.jp/users/" + user + "/history/json"
 type AtCoderHistory struct {
 	IsRated                     bool        `json:"IsRated"`
 	Place                       json.Number `json:"Place"`
@@ -55,17 +57,6 @@ func api() string {
 		re += execute(resp)
 	}
 	return re
-	/*
-		for _, user := range users {
-			res, err := http.Get("https://atcoder.jp/users/" + user + "/history/json")
-			if err != nil {
-				fmt.Println(err)
-				return
-			}
-			defer res.Body.Close()
-			done(res)
-		}
-	*/
 }
 
 func execute(response *http.Response) string {
@@ -73,7 +64,6 @@ func execute(response *http.Response) string {
 	if err != nil {
 		panic(err)
 	}
-	//	fmt.Println(string(body))
 
 	var info string = string(body)
 	// Unmarshal結果の格納先である構造体のポインターを取得
@@ -98,12 +88,10 @@ func execute(response *http.Response) string {
 }
 
 func done(response *http.Response) {
-
 	body, err := ioutil.ReadAll(response.Body)
 	if err != nil {
 		return
 	}
-	//	fmt.Println(string(body))
 
 	var info string = string(body)
 	// Unmarshal結果の格納先である構造体のポインターを取得
@@ -111,9 +99,9 @@ func done(response *http.Response) {
 	var atCoderHistories []*AtCoderHistory
 	// JSON文字列をバイト列にキャスト
 	// atCoderHistoriesにバイト列を格納する
-	var aaa = json.Unmarshal([]byte(info), &atCoderHistories)
-	if aaa != nil {
-		fmt.Println(aaa)
+	var tmp = json.Unmarshal([]byte(info), &atCoderHistories)
+	if tmp != nil {
+		fmt.Println(tmp)
 		return
 	}
 

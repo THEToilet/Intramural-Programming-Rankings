@@ -19,9 +19,10 @@ func main() {
 	// route handler functions defined in other files
 	//
 
-	// index
+	// GET index
 	mux.HandleFunc("/index", index)
 
+	// GET test
 	mux.HandleFunc("/test", test)
 
 	// starting up the server
