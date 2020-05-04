@@ -1,0 +1,29 @@
+{{ define "content" }}
+
+<table class="tablesorter-ice" id="myTable">
+  <thead>
+    <tr>
+      <th>Time</th>
+      <th>ContestName</th>
+      <th>Place</th>
+      <th>OldRating</th>
+      <th>NewRating</th>
+      <th>Performance</th>
+      <th>InnerPerformance</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{range .}}
+    <tr>
+      <td>{{.Time}}</td>
+      <td>{{.ContestName}}</td>
+      <td>{{.Place}}</td>
+      <td>{{.OldRating}}</td>
+      <td>{{.NewRating}}</td>
+      <td>{{.Performance}}</td>
+      <td>{{.InnerPerformance}}</td>
+    </tr>
+    {{end}}
+  </tbody>
+</table>
+{{ end }}
