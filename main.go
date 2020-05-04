@@ -24,7 +24,7 @@ func main() {
 	//
 
 	// GET index
-	mux.HandleFunc("/index", index)
+//	mux.HandleFunc("/index", index)
 
 	// GET test
 	mux.HandleFunc("/test", test)

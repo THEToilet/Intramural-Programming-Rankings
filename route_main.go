@@ -4,12 +4,12 @@ import (
 	"fmt"
 	"net/http"
 )
-
+/*
 // GET index
 func index(writer http.ResponseWriter, request *http.Request) {
 	fmt.Fprintf(writer, getUserScore())
 }
-
+*/
 // GET test
 func test(writer http.ResponseWriter, request *http.Request) {
 	storeInSql()

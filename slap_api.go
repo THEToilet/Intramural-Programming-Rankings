@@ -39,46 +39,6 @@ func getUsersatCoderInfo() []*AtCoderInfo {
 	return atcoderInfos
 }
 
-
-// Returning user information as a string
-func getUserScore() string {
-
-	users := loadFile("user.txt")
-	top := "username  AcceptedCount  AcceptedCountRank   RatedPointSum \n ---------------------------------------------\n"
-	for _, user := range users {
-		resp, err := http.Get("https://kenkoooo.com/atcoder/atcoder-api/v2/user_info?user=" + user)
-		if err != nil {
-			fmt.Println(err)
-		}
-		defer resp.Body.Close()
-
-		top += atCoderInfoParse(resp)
-	}
-	return top
-}
-
-func atCoderInfoParse(response *http.Response) string {
-
-	body, err := ioutil.ReadAll(response.Body)
-	if err != nil {
-		panic(err)
-	}
-	var info string = string(body)
-	// Unmarshal結果の格納先である構造体のポインターを取得
-	atCoderInfo := new(AtCoderInfo)
-
-	// JSON文字列をバイト列にキャスト
-	jsonBytes := []byte(info)
-
-	// atCoderInfoにバイト列を格納する
-	if err := json.Unmarshal(jsonBytes, atCoderInfo); err != nil {
-		fmt.Println(err)
-	}
-	result := (string(atCoderInfo.UserId) + "   " + string(atCoderInfo.AcceptedCount) + "  " + string(atCoderInfo.AcceptedCountRank) + "      " + string(atCoderInfo.RatedPointSum) + "\n")
-
-	return result
-}
-
 func getAtCoderInfoStruct(name string) *AtCoderInfo {
 
 	res, err := http.Get("https://kenkoooo.com/atcoder/atcoder-api/v2/user_info?user=" + name)
