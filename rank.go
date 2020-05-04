@@ -5,7 +5,7 @@ type UserRank struct {
 	UserName string `json:"UserName"`
 }
 
-func ranknig() []*UserRank {
+func ranking() []*UserRank {
 
 	users := loadFile("user.txt")
 

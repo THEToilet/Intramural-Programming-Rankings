@@ -28,3 +28,8 @@ func user(writer http.ResponseWriter, request *http.Request) {
 	vals := request.URL.Query()
 	generateHTML(writer, getAtCoderHistoryStruct(vals.Get("q")), "index", "navbar", "userpage")
 }
+
+// GET /rank
+func rank(writer http.ResponseWriter, request *http.Request) {
+	generateHTML(writer, ranking(), "index", "navbar", "rate.rank")
+}

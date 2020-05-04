@@ -33,6 +33,8 @@ func main() {
 
 	mux.HandleFunc("/user", user)
 
+	mux.HandleFunc("/rank", rank)
+
 	mux.HandleFunc("/css/", serveResource)
 	mux.HandleFunc("/js/", serveResource)
 
