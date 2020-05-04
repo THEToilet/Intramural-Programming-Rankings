@@ -7,6 +7,18 @@ import (
 	"time"
 )
 
+// Users ユーザー情報のテーブル情報(SQLの構造体)
+type Users struct {
+	Id                int
+	Name              string `gorm:"column:name"`
+	AcceptedCount     int    `gorm:"column:accepted_count"`
+	AcceptedCountRank int    `gorm:"column:accepted_count_rank"`
+	RatedPointSum     int    `gorm:"column:rated_point_sum"`
+	RatedPointSumRank int    `gorm:"column:rated_point_sum_rank"`
+	CreatedTime       string `gorm:"column:created_time" sql:"not null;type:date"`
+	UpdatedTime       string `gorm:"column:updated_time" sql:"not null;type:date"`
+}
+
 func test_sql() {
 	// db接続
 	db, err := sqlConnect()
@@ -88,16 +100,4 @@ func sqlConnect() (database *gorm.DB, err error) {
 
 	CONNECT := USER + ":" + PASS + "@" + PROTOCOL + "/" + DBNAME + "?charset=utf8&parseTime=true&loc=Asia%2FTokyo"
 	return gorm.Open(DBMS, CONNECT)
-}
-
-// Users ユーザー情報のテーブル情報(SQLの構造体)
-type Users struct {
-	Id                int
-	Name              string `gorm:"column:name"`
-	AcceptedCount     int    `gorm:"column:accepted_count"`
-	AcceptedCountRank int    `gorm:"column:accepted_count_rank"`
-	RatedPointSum     int    `gorm:"column:rated_point_sum"`
-	RatedPointSumRank int    `gorm:"column:rated_point_sum_rank"`
-	CreatedTime       string `gorm:"column:created_time" sql:"not null;type:date"`
-	UpdatedTime       string `gorm:"column:updated_time" sql:"not null;type:date"`
 }
