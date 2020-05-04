@@ -7,7 +7,7 @@ import (
 
 // GET index
 func index(writer http.ResponseWriter, request *http.Request) {
-	fmt.Fprintf(writer, api())
+	fmt.Fprintf(writer, getUserScore())
 }
 
 // GET test

@@ -43,9 +43,11 @@ func getApi(name string) *AtCoderInfo {
 	return ee(respo)
 }
 
-func api() string {
+// Returning user information as a string
+func getUserScore() string {
+
 	users := loadFile("user.txt")
-	var re string = "username  AcceptedCount  AcceptedCountRank   RatedPointSum \n ---------------------------------------------\n"
+	var top string = "username  AcceptedCount  AcceptedCountRank   RatedPointSum \n ---------------------------------------------\n"
 	for _, user := range users {
 		resp, err := http.Get("https://kenkoooo.com/atcoder/atcoder-api/v2/user_info?user=" + user)
 		if err != nil {
@@ -54,12 +56,12 @@ func api() string {
 		}
 		defer resp.Body.Close()
 
-		re += execute(resp)
+		top += atCoderInfoParse(resp)
 	}
-	return re
+	return top
 }
 
-func execute(response *http.Response) string {
+func atCoderInfoParse(response *http.Response) string {
 	body, err := ioutil.ReadAll(response.Body)
 	if err != nil {
 		panic(err)
@@ -72,10 +74,11 @@ func execute(response *http.Response) string {
 	// JSON文字列をバイト列にキャスト
 	jsonBytes := []byte(info)
 
-	// xJapanにバイト列を格納する
+	// atCoderInfoにバイト列を格納する
 	if err := json.Unmarshal(jsonBytes, atCoderInfo); err != nil {
 		fmt.Println(err)
 	}
+
 	fmt.Println("UserId : " + atCoderInfo.UserId)
 	fmt.Println("AcceptedCount : " + atCoderInfo.AcceptedCount)
 	fmt.Println("AcceptedCountRank : " + atCoderInfo.AcceptedCountRank)
@@ -87,7 +90,8 @@ func execute(response *http.Response) string {
 
 }
 
-func done(response *http.Response) {
+func AtCoderHistoryParse(response *http.Response) {
+
 	body, err := ioutil.ReadAll(response.Body)
 	if err != nil {
 		return
