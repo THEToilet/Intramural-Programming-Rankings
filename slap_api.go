@@ -30,6 +30,15 @@ type AtCoderHistory struct {
 	EndTime/*time.Time*/ string             `json:"EndTime"`
 }
 
+func getUsersatCoderInfo() []*AtCoderInfo {
+	users := loadFile("user.txt")
+	atcoderInfos := make([]*AtCoderInfo, 0, 100)
+	for _, user := range users {
+		atcoderInfos = append(atcoderInfos, getAtCoderInfoStruct(user))
+	}
+	return atcoderInfos
+}
+
 // Returning user information as a string
 func getUserScore() string {
 
