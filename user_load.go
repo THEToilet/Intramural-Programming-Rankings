@@ -18,6 +18,7 @@ func loadFile(filePath string) []string {
 	defer f.Close()
 
 	// Scannerで読み込む
+
 	// lines := []string{}
 	lines := make([]string, 0, 100) // ある程度行数が事前に見積もれるようであれば、makeで初期capacityを指定して予めメモリを確保しておくことが望ましい
 	scanner := bufio.NewScanner(f)

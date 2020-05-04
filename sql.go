@@ -1,7 +1,7 @@
 package main
 
 import (
- 	"fmt"
+	"fmt"
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/jinzhu/gorm"
 	"time"
@@ -92,7 +92,7 @@ func getUserInfo() string {
 	//表示
 	for _, user := range users {
 
-	  fmt.Println(user)
+		fmt.Println(user)
 		fmt.Println(user.Id)
 		fmt.Println(user.Name)
 		fmt.Println(user.AcceptedCount)
@@ -102,11 +102,11 @@ func getUserInfo() string {
 		fmt.Println(user.CreatedTime)
 		fmt.Println(user.UpdatedTime)
 
-//	for _, user := range users {
-		result += (fmt.Sprintf("%d",user.Id) +" "+ fmt.Sprintf("%s",user.Name) + " "+ fmt.Sprintf("%d",user.AcceptedCount) +" "+ fmt.Sprintf("%d",user.AcceptedCountRank) +" "+ fmt.Sprintf("%d",user.RatedPointSum) +" "+ fmt.Sprintf("%d",user.RatedPointSumRank) +" " + fmt.Sprintf("%s",user.CreatedTime) + "\n")
+		//	for _, user := range users {
+		result += (fmt.Sprintf("%d", user.Id) + " " + fmt.Sprintf("%s", user.Name) + " " + fmt.Sprintf("%d", user.AcceptedCount) + " " + fmt.Sprintf("%d", user.AcceptedCountRank) + " " + fmt.Sprintf("%d", user.RatedPointSum) + " " + fmt.Sprintf("%d", user.RatedPointSumRank) + " " + fmt.Sprintf("%s", user.CreatedTime) + "\n")
 	}
 
-//result += "unnko"
+	//result += "unnko"
 
 	return result
 
