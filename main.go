@@ -14,9 +14,9 @@ func main() {
 	mux := http.NewServeMux()
 
 	//files := http.FileServer(http.Dir(config.Static))
-//	files := http.FileServer(http.Dir("/public"))
+	//	files := http.FileServer(http.Dir("/public"))
 	// Deleate Prefix
-//	mux.Handle("/static/", http.StripPrefix("/static/", files))
+	//	mux.Handle("/static/", http.StripPrefix("/static/", files))
 
 	//
 	// all route patterns matched here
@@ -52,10 +52,9 @@ func serveResource(w http.ResponseWriter, req *http.Request) {
 		contentType = "text/css"
 	} else if strings.HasSuffix(path, ".png") {
 		contentType = "image/png"
-	} else if strings.HasSuffix(path, ".js"){
+	} else if strings.HasSuffix(path, ".js") {
 		contentType = "text/javascript"
-	}
-	else {
+	} else {
 		contentType = "text/plain"
 	}
 
