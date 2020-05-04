@@ -12,7 +12,7 @@ func index(writer http.ResponseWriter, request *http.Request) {
 
 // GET test
 func test(writer http.ResponseWriter, request *http.Request) {
-	test_sql()
+	storeInSql()
 	result := getUserInfo()
 	fmt.Fprintf(writer, result)
 	//generateHTML(writer, dirwalk("./resources"), "index", "navbar", "list")

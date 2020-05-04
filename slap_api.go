@@ -69,38 +69,15 @@ func atCoderInfoParse(response *http.Response) string {
 	return result
 }
 
-func getApi(name string) *AtCoderInfo {
+func getAtCoderInfoStruct(name string) *AtCoderInfo {
 
-	respo, err := http.Get("https://kenkoooo.com/atcoder/atcoder-api/v2/user_info?user=" + name)
-
+	res, err := http.Get("https://kenkoooo.com/atcoder/atcoder-api/v2/user_info?user=" + name)
 	if err != nil {
 		fmt.Println(err)
 	}
-	defer respo.Body.Close()
+	defer res.Body.Close()
 
-	return getAtCoderInfoStruct(respo)
-}
-
-func getAtCoderHistoryStruct(response *http.Response) []*AtCoderHistory {
-
-	body, err := ioutil.ReadAll(response.Body)
-	if err != nil {
-		panic(err)
-	}
-	var info string = string(body)
-	// Unmarshal結果の格納先である構造体のポインターを取得
-	var atCoderHistories []*AtCoderHistory
-	// atCoderHistoriesにバイト列を格納する
-	if err := json.Unmarshal([]byte(info), &atCoderHistories); err != nil {
-		fmt.Println(err)
-	}
-
-	return atCoderHistories
-}
-
-func getAtCoderInfoStruct(response *http.Response) *AtCoderInfo {
-
-	body, err := ioutil.ReadAll(response.Body)
+	body, err := ioutil.ReadAll(res.Body)
 	if err != nil {
 		panic(err)
 	}
@@ -117,4 +94,20 @@ func getAtCoderInfoStruct(response *http.Response) *AtCoderInfo {
 	}
 
 	return atCoderInfo
+}
+func getAtCoderHistoryStruct(response *http.Response) []*AtCoderHistory {
+
+	body, err := ioutil.ReadAll(response.Body)
+	if err != nil {
+		panic(err)
+	}
+	var info string = string(body)
+	// Unmarshal結果の格納先である構造体のポインターを取得
+	var atCoderHistories []*AtCoderHistory
+	// atCoderHistoriesにバイト列を格納する
+	if err := json.Unmarshal([]byte(info), &atCoderHistories); err != nil {
+		fmt.Println(err)
+	}
+
+	return atCoderHistories
 }

@@ -19,7 +19,7 @@ type Users struct {
 	UpdatedTime       string `gorm:"column:updated_time" sql:"not null;type:date"`
 }
 
-func test_sql() {
+func storeInSql() {
 	// db接続
 	db, err := sqlConnect()
 	if err != nil {
@@ -27,14 +27,10 @@ func test_sql() {
 	}
 	defer db.Close()
 
-	uusers := loadFile("user.txt")
+	users := loadFile("user.txt")
 
-	uuuu := []Users{}
-	count := 1
-	for _, user := range uusers {
-		tmpInfo := getApi(user)
-		db.First(&uuuu, count)
-		count++
+	for _, user := range users {
+		tmpInfo := getAtCoderInfoStruct(user)
 		id, _ := tmpInfo.AcceptedCount.Int64()
 		id1, _ := tmpInfo.AcceptedCountRank.Int64()
 		id2, _ := tmpInfo.RatedPointSum.Int64()
