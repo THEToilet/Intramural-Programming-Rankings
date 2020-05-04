@@ -20,14 +20,11 @@ func test(writer http.ResponseWriter, request *http.Request) {
 
 // GET list
 func list(writer http.ResponseWriter, request *http.Request) {
-	//fmt.Printf("%#v", getUsersatCoderInfo())
 	generateHTML(writer, getUsersatCoderInfo(), "index", "navbar", "ranking")
 }
 
 // GET /user?q=
 func user(writer http.ResponseWriter, request *http.Request) {
 	vals := request.URL.Query()
-	fmt.Println(vals.Get("q"))
-	//fmt.Printf("%#v", getAtCoderHistoryStruct(vals.Get("q")))
 	generateHTML(writer, getAtCoderHistoryStruct(vals.Get("q")), "index", "navbar", "userpage")
 }
