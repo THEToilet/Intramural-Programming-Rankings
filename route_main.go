@@ -27,5 +27,6 @@ func list(writer http.ResponseWriter, request *http.Request) {
 func user(writer http.ResponseWriter, request *http.Request) {
 	vals := request.URL.Query()
 	fmt.Println(vals.Get("q"))
-	generateHTML(writer, getAtCoderHistoryStruct(vals.Get("q")), "index", "navbar", "userpage")
+	fmt.Printf("%#v",getAtCoderHistoryStruct(vals.Get("q")))
+	generateHTML(writer, getUsersatCoderHistory(vals.Get("q")), "index", "navbar", "userpage")
 }
