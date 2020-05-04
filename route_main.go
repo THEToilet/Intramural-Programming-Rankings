@@ -31,6 +31,5 @@ func user(writer http.ResponseWriter, request *http.Request) {
 
 // GET /rank
 func rank(writer http.ResponseWriter, request *http.Request) {
-//	fmt.Printf("#%v", ranking())
 	generateHTML(writer, ranking(), "index", "navbar", "rate.rank")
 }
