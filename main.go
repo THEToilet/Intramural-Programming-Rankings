@@ -31,7 +31,7 @@ func main() {
 
 	mux.HandleFunc("/list", list)
 
-	mux.HandleFunc("/user", list)
+	mux.HandleFunc("/user", user)
 
 	mux.HandleFunc("/css/", serveResource)
 	mux.HandleFunc("/js/", serveResource)
