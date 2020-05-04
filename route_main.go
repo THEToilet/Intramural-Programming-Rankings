@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"net/http"
 )
+
 /*
 // GET index
 func index(writer http.ResponseWriter, request *http.Request) {
@@ -20,4 +21,11 @@ func test(writer http.ResponseWriter, request *http.Request) {
 // GET list
 func list(writer http.ResponseWriter, request *http.Request) {
 	generateHTML(writer, getUsersatCoderInfo(), "index", "navbar", "ranking")
+}
+
+// GET /user?q=
+func user(writer http.ResponseWriter, request *http.Request) {
+	vals := request.URL.Query()
+	fmt.Println(readfile(vals.Get("q")))
+	generateHTML(writer, readfile(vals.Get("q")), "index", "navbar", "ranking")
 }

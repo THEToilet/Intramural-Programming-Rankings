@@ -24,12 +24,14 @@ func main() {
 	//
 
 	// GET index
-//	mux.HandleFunc("/index", index)
+	//	mux.HandleFunc("/index", index)
 
 	// GET test
 	mux.HandleFunc("/test", test)
 
 	mux.HandleFunc("/list", list)
+
+	mux.HandleFunc("/user", list)
 
 	mux.HandleFunc("/css/", serveResource)
 	mux.HandleFunc("/js/", serveResource)
