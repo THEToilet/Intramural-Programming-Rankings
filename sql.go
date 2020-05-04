@@ -31,16 +31,16 @@ func storeInSql() {
 
 	for _, user := range users {
 		tmpInfo := getAtCoderInfoStruct(user)
-		id, _ := tmpInfo.AcceptedCount.Int64()
-		id1, _ := tmpInfo.AcceptedCountRank.Int64()
-		id2, _ := tmpInfo.RatedPointSum.Int64()
-		id3, _ := tmpInfo.RatedPointSumRank.Int64()
+		num0, _ := tmpInfo.AcceptedCount.Int64()
+		num1, _ := tmpInfo.AcceptedCountRank.Int64()
+		num2, _ := tmpInfo.RatedPointSum.Int64()
+		num3, _ := tmpInfo.RatedPointSumRank.Int64()
 		db.Create(&Users{
 			Name:              tmpInfo.UserId,
-			AcceptedCount:     int(id),
-			AcceptedCountRank: int(id1),
-			RatedPointSum:     int(id2),
-			RatedPointSumRank: int(id3),
+			AcceptedCount:     int(num0),
+			AcceptedCountRank: int(num1),
+			RatedPointSum:     int(num2),
+			RatedPointSumRank: int(num3),
 			CreatedTime:       getDate(),
 			UpdatedTime:       getDate(),
 		})
