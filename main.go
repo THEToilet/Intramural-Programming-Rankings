@@ -25,6 +25,8 @@ func main() {
 	// GET test
 	mux.HandleFunc("/test", test)
 
+	mux.HandleFunc("/list", list)
+
 	// starting up the server
 	server := &http.Server{
 		Addr:           "127.0.0.1:11180",
