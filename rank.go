@@ -22,7 +22,8 @@ func ranking() []*UserRank {
 		userRank = new(UserRank)
 		userRank.Rate = userScore
 		userRank.UserName = user
-
+	//	fmt.Println(userRank.Rate)
+	//	fmt.Println(userRank.UserName)
 		userRanks = append(userRanks, userRank)
 	}
 

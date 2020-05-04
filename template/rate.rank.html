@@ -1,17 +1,17 @@
 {{ define "content" }}
 
-<table class="tablesorter-ice" id="myTable">
+<table class="tablesorter-ice" id="rank">
   <thead>
     <tr>
       <th>UserName</th>
-      <th>Rank</th>
+      <th>Rate</th>
     </tr>
   </thead>
   <tbody>
     {{range .}}
     <tr>
       <td><a href="/user?q={{.UserName}}">{{.UserName}}</a></td>
-      <td>{{.Rank}}</td>
+      <td>{{.Rate}}</td>
     </tr>
     {{end}}
   </tbody>
