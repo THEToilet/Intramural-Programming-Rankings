@@ -13,7 +13,7 @@
   <tbody>
     {{range .}}
     <tr>
-      <td>{{.UserId}}</td>
+      <td><a href="/user?q={{.UserId}}">{{.UserId}}</a></td>
       <td>{{.AcceptedCount}}</td>
       <td>{{.AcceptedCountRank}}</td>
       <td>{{.RatedPointSum}}</td>

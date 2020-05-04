@@ -26,6 +26,6 @@ func list(writer http.ResponseWriter, request *http.Request) {
 // GET /user?q=
 func user(writer http.ResponseWriter, request *http.Request) {
 	vals := request.URL.Query()
-	fmt.Println(readfile(vals.Get("q")))
-	generateHTML(writer, readfile(vals.Get("q")), "index", "navbar", "ranking")
+	fmt.Println(vals.Get("q"))
+	generateHTML(writer, vals.Get("q"), "index", "navbar", "ranking")
 }
