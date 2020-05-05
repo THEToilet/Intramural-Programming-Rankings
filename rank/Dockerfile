@@ -11,7 +11,7 @@ WORKDIR /home/rank/
 #COPY utils.go /home/rank/
 #COPY testgo /home/rank/
 
-COPY ../ /home/rank/
+COPY ./rank /home/rank
 
 CMD ["cd", "/home/rank/"]
 
