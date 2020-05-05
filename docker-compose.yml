@@ -1,3 +1,5 @@
+##
+# 構成: MySQL + Go Ranking
 version: '3'
 services:
   mysql:
@@ -13,3 +15,14 @@ services:
       MYSQL_DATABASE: db
       MYSQL_USER: user
       MYSQL_PASSWORD: pass
+    restart: always
+
+  rank:
+    build: .
+    ports:
+      - 11000:11000
+    expose:
+      - 11000
+    volumes:
+      - ../:/home/rank/
+    restart: always
