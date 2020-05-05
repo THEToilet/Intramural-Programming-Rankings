@@ -17,7 +17,7 @@ services:
       MYSQL_PASSWORD: pass
     restart: always
 
-  rank:
+  api:
     build: .
     ports:
       - 11000:11000
