@@ -31,3 +31,9 @@ jobs:
       run: |
         echo Add other actions to build,
         echo test, and deploy your project.
+        
+    - name: Run a Docker ps
+      run: docker-compose up -d
+    
+    - name: Run a dokcer ps
+      run: docker ps
