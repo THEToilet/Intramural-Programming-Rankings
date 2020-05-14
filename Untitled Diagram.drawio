@@ -1,1 +1,58 @@
-<mxfile modified="2020-05-14T13:48:14.503Z" host="app.diagrams.net" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.138 Safari/537.36" etag="xflIrWMOF-QNYsuYF_kp" version="13.0.5" type="github"><diagram id="Ht1M8jgEwFfnCIfOTk4-" name="Page-1">7Vhdj5s6EP01eQzCfIbHDdm0lVqpVaRe6b4gBxywFjA1zibbX98xmARsom2lRFe66gbt2mPjGc85c+zNwo2r8weOm+ILy0i5cOzsvHA3C8dBnuMs5GNnb8rir6LeknOaKdvVsKM/iTLaynqkGWknEwVjpaDN1JiyuiapmNgw5+w0nXZg5dRrg3NiGHYpLk3rPzQThbKiILoOfCQ0L5TrlRP2AxUeJqudtAXO2Glkcp8XbswZE32rOseklNkb8tK/t70xegmMk1r8zgvLb59+/NgF25T9JP/ijRe8HpdLpJZ5xeVR7ThmNSvw9687FbZ4G3LRMFqLLp/+Gh5wF9sLH0Zi2bMcXzPo/XBqQGZPrjE16P1wakD68kjzj/QARwajN1ne1vzbowDhcdfsKEpak/jCPBuMOccZBURiVjIOtprVkL11IaoSegiap4IKsmtwKrN6grIB24HVQnEfOUNfJV6uCtxpZLs657LOLHxqPSvn7Nh0Lj8B+2dHE1YnDScVbWUQreDshQyRLRzXfwriVSD90bLUIn4lXFCog6eS5nJxwaQvrHolOQi5ImyD1vnnrrdxbRX6nIsMtwXJ1H4U6cAFOd+kM7oUCcgLYRUR/A2mqBc8X9WVUpZlMBTa6Vqn7krZilGJusNErLQhvyx+LR9oqAr6k2qKjGr6QGrCadrpm4RLr6mZzN+G6ZJDdBMgnTm34LgDAv5KQ8APTAQu8jdGwHkcAraBwLElvDXy/ifFq+fQ89eBZwA1TB4BCpNXYYQig/8Ddp/xnpRfWUsF7Sp4z4Rg1bvVl0KMhE9lZSwh0QwRcNv0Gz3Qs4xjXlMg+CNsC8t4kj5z7rrTfcKfX0kv/+gO5EFIJw9yDfIge4Y8F+P9yeMY5DF4M2SNVt3FYYzAPGbvQl3KgTVOX6RA1NmIO4fuB6Z0zp4GAGfRVPFsCiHkzehJZsLZplntWhROhwOtM8KtFDw62wwLDH+kHQpjW7KctUtcZ8s9h9/QzNiewIAvE7KNwmTD0hfCIT8rq6nzOYmy7SCIY5P+th1ut9v76E0gz+8xZbxwhjJzeoMepzfe+5Qxy6crvv4yaOvSMCLUrL6UGo8uWnAvTdEQ9JH8zOhF1aaYWN1bDYcLhiVptcctSUA2wNcdEI9c/YyfOWHmReJxiAd/EX8g4p6GuPfbx8LjEPf/h8eC/e6x0LKU4nJZkYzipYNW7uVE6EeSpBtKEtVVvZyK4rhP/uvDItLvF65vEimc4VH4KBo55r/aDxYOva5t+XmAoMzepQ2V0dWEHQ40JRY4Ia11InvZuA/2bmjcLWeODf9OIgLd65c43djouzD3+Rc=</diagram></mxfile>
+<mxfile modified="2020-05-14T14:12:14.600Z" host="app.diagrams.net" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.138 Safari/537.36" etag="2eaiIdalkhn9NU8CE9bj" version="13.0.5" type="github">
+  <diagram id="Ht1M8jgEwFfnCIfOTk4-" name="Page-1">
+    <mxGraphModel dx="1422" dy="1589" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="-QIqqS6FcozeZaD46vu--11" value="ConohaVPS" style="points=[[0,0],[0.25,0],[0.5,0],[0.75,0],[1,0],[1,0.25],[1,0.5],[1,0.75],[1,1],[0.75,1],[0.5,1],[0.25,1],[0,1],[0,0.75],[0,0.5],[0,0.25]];outlineConnect=0;gradientColor=none;html=1;whiteSpace=wrap;fontSize=12;fontStyle=0;shape=mxgraph.aws4.group;grIcon=mxgraph.aws4.group_on_premise;strokeColor=#5A6C86;fillColor=none;verticalAlign=top;align=left;spacingLeft=30;fontColor=#5A6C86;dashed=0;" parent="1" vertex="1">
+          <mxGeometry x="430" y="-620" width="380" height="320" as="geometry" />
+        </mxCell>
+        <mxCell id="-QIqqS6FcozeZaD46vu--19" value="App" style="fillColor=none;strokeColor=#5A6C86;dashed=1;verticalAlign=top;fontStyle=0;fontColor=#5A6C86;" parent="1" vertex="1">
+          <mxGeometry x="560" y="-560" width="220" height="220" as="geometry" />
+        </mxCell>
+        <mxCell id="-QIqqS6FcozeZaD46vu--10" value="users" style="outlineConnect=0;gradientColor=none;fontColor=#545B64;strokeColor=none;fillColor=#879196;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=19;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.illustration_users;pointerEvents=1" parent="1" vertex="1">
+          <mxGeometry x="110" y="-500" width="100" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="-QIqqS6FcozeZaD46vu--12" value="" style="shape=image;html=1;verticalAlign=top;verticalLabelPosition=bottom;labelBackgroundColor=#ffffff;imageAspect=0;aspect=fixed;image=https://cdn3.iconfinder.com/data/icons/logos-and-brands-adobe/512/97_Docker-128.png;strokeColor=#0066CC;fillColor=#007FFF;" parent="1" vertex="1">
+          <mxGeometry x="621.5" y="-490" width="97" height="97" as="geometry" />
+        </mxCell>
+        <mxCell id="-QIqqS6FcozeZaD46vu--14" value="&lt;font style=&quot;font-size: 15px&quot;&gt;AtCoder /json&lt;/font&gt;" style="pointerEvents=1;shadow=0;dashed=0;html=1;strokeColor=none;labelPosition=center;verticalLabelPosition=bottom;verticalAlign=top;align=center;fillColor=#515151;shape=mxgraph.mscae.enterprise.database_server" parent="1" vertex="1">
+          <mxGeometry x="910" y="-660" width="100" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="-QIqqS6FcozeZaD46vu--16" value="AtCoder非公式API&lt;br style=&quot;font-size: 15px;&quot;&gt;&lt;a href=&quot;https://github.com/kenkoooo/AtCoderProblems/&quot; style=&quot;font-size: 15px;&quot;&gt;https://github.com/kenkoooo/AtCoderProblems/&lt;/a&gt;" style="pointerEvents=1;shadow=0;dashed=0;html=1;strokeColor=none;labelPosition=center;verticalLabelPosition=bottom;verticalAlign=top;align=center;fillColor=#515151;shape=mxgraph.mscae.enterprise.database_server;horizontal=1;fontSize=15;" parent="1" vertex="1">
+          <mxGeometry x="920" y="-413" width="100" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="-QIqqS6FcozeZaD46vu--15" value="" style="shape=image;html=1;verticalAlign=top;verticalLabelPosition=bottom;labelBackgroundColor=#ffffff;imageAspect=0;aspect=fixed;image=https://cdn0.iconfinder.com/data/icons/social-media-2183/512/social__media__social_media__github_-128.png;strokeColor=#0066CC;fillColor=#007FFF;" parent="1" vertex="1">
+          <mxGeometry x="890" y="-353" width="70" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="-QIqqS6FcozeZaD46vu--21" value="&lt;font style=&quot;font-size: 15px&quot;&gt;WebSite&lt;/font&gt;" style="pointerEvents=1;shadow=0;dashed=0;html=1;strokeColor=none;fillColor=#505050;labelPosition=center;verticalLabelPosition=bottom;verticalAlign=top;outlineConnect=0;align=center;shape=mxgraph.office.sites.website;" parent="1" vertex="1">
+          <mxGeometry x="360" y="-510" width="150" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="mchQ4MAC3xxZWC-NREM0-5" value="" style="endArrow=classic;html=1;fontSize=15;" edge="1" parent="1" source="-QIqqS6FcozeZaD46vu--10" target="-QIqqS6FcozeZaD46vu--21">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="560" y="-410" as="sourcePoint" />
+            <mxPoint x="350" y="-460" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="mchQ4MAC3xxZWC-NREM0-6" value="" style="endArrow=classic;html=1;fontSize=15;entryX=-0.01;entryY=0.633;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="-QIqqS6FcozeZaD46vu--12" target="-QIqqS6FcozeZaD46vu--14">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="560" y="-410" as="sourcePoint" />
+            <mxPoint x="610" y="-460" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="mchQ4MAC3xxZWC-NREM0-7" value="" style="endArrow=classic;html=1;fontSize=15;" edge="1" parent="1" source="-QIqqS6FcozeZaD46vu--12" target="-QIqqS6FcozeZaD46vu--16">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="560" y="-410" as="sourcePoint" />
+            <mxPoint x="610" y="-460" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="mchQ4MAC3xxZWC-NREM0-8" value="" style="endArrow=classic;html=1;fontSize=15;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="-QIqqS6FcozeZaD46vu--21" target="-QIqqS6FcozeZaD46vu--12">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="560" y="-410" as="sourcePoint" />
+            <mxPoint x="610" y="-460" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
